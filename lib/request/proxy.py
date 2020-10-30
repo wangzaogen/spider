@@ -28,7 +28,25 @@ def spider_proxyip(num=10):
         print("spider_proxyip exception:")
         print(e)
 
+def check_ip(ip_info):
+    """测试IP地址是否有效"""
+    ip_url = ip_info['ip'] + ':' + str(ip_info['port'])
+    proxies = {'http': 'http://' + ip_url, 'https': 'https://' + ip_url}
+    res = False
+    try:
+        request = requests.get('http://icanhazip.com/', headers=create_headers(), proxies=proxies, timeout=10)
+        if request.status_code == 200:
+            res = True
+    except Exception as error_info:
+        res = False
+    return res
+
 
 if __name__ == '__main__':
-    spider_proxyip(10)
-    print(proxys_src)
+    proxy = {
+        'ip':'58.220.95.90',
+        'port':'9401'
+    }
+    check_ip(proxy)
+    # spider_proxyip(10)
+    # print(proxys_src)
