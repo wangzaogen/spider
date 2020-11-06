@@ -28,7 +28,7 @@ def get_code_to_new_html(shareurl):
     with open('验证码.jpg', 'wb') as f:
         f.write(response)
     time.sleep(2)
-    chaojiying = Chaojiying_Client('wangzaogen', '098765', '909512')
+    chaojiying = Chaojiying_Client('xxxx', 'xxxx', 'xxxx')
     im = open('验证码.jpg', 'rb').read()
     yanzhengma = chaojiying.PostPic(im, 1902)['pic_str']
     print('验证码: {}'.format(yanzhengma))
